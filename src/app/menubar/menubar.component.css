@@ -1,0 +1,84 @@
+div {
+    background: rgb(52, 52, 52);
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    user-select: none;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 100;
+}
+
+div > * {
+    display: inline-block;
+}
+
+h1 {
+    font-size: 25px;
+    padding: 0;
+    margin-right: 25px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+
+ul#main {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+ul#main > li {
+    display: inline-block;
+    position: relative;
+    height: 100%;
+    padding-top: 7px;
+}
+
+li:hover {
+    background: rgb(45, 45, 45);
+    cursor: pointer;
+}
+
+li > span {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+li:hover > ul {
+    display: block;
+}
+
+@keyframes display {
+    from { opacity: 0%; }
+    to { opacity: 100%; }
+}
+
+ul.sub {
+    display: none;
+    margin: 0;
+    padding: 0;
+    padding-top: 10px;
+    position: absolute;
+    z-index: 100;
+    width: 100px;
+    background: rgba(52, 52, 52, 0.4);
+    animation-name: display;
+    animation-duration: 500ms;
+}
+
+ul.sub > li {
+    display: block;
+    text-align: center;
+}
+
+ul.sub > li:hover {
+    background: rgba(45, 45, 45, 0.5);
+}

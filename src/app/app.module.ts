@@ -4,11 +4,13 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { CodeEditorComponent } from './code-editor/code-editor.component';
+import { MenubarComponent } from './menubar/menubar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CodeEditorComponent
+    CodeEditorComponent,
+    MenubarComponent
   ],
   imports: [
     BrowserModule,
