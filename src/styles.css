@@ -1,1 +1,21 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.ace_gutter {
+    background: none !important;
+}
+
+.ace_gutter-cell {
+    padding-left: 20px !important;
+    padding-right: 10px !important;
+    font-weight: lighter;
+}
+
+.ace_gutter-active-line {
+    font-weight: bolder;
+    color: white;
+}
