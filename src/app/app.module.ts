@@ -5,12 +5,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { CodeEditorComponent } from './code-editor/code-editor.component';
 import { MenubarComponent } from './menubar/menubar.component';
+import { DialogComponent } from './dialog/dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CodeEditorComponent,
-    MenubarComponent
+    MenubarComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule,
