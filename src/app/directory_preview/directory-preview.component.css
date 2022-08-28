@@ -1,0 +1,79 @@
+:host {
+    display: block;
+    padding: 15px 50px;
+    font-size: 20px;
+    width: 50vw;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+#route {
+    margin: 4% auto;
+    width: fit-content;
+    font-size: 35px;
+}
+
+#route > li {
+    display: inline;
+}
+
+#route > li > span:hover {
+    cursor: pointer;
+    color: red;
+    transform: rotateZ(2deg);
+}
+
+#content {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(9em, 1fr));
+    grid-gap: 15px;
+    margin-bottom: 4%;
+    user-select: none;
+}
+
+#content > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 5px;
+    padding: 1em 1em;
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.1) 5%, rgba(0, 0, 0, 0.3));
+    box-shadow: 1px 1px 1px black;
+    overflow: hidden;
+}
+
+#content > .new {
+    background: linear-gradient(90deg, rgba(17, 202, 0, 0.5) 15%, rgba(0, 0, 0, 0.2));
+}
+
+#content > div:hover {
+    transform: scale(1.02);
+    box-shadow: 1px 1px 4px black;
+    cursor: pointer;
+}
+
+#content > div:active {
+    transform: scale(1.07);
+    box-shadow: 1px 1px 4px black;
+    cursor: pointer;
+}
+
+#content > .new:hover {
+    box-shadow: 1px 1px 4px green;
+}
+
+.file::before {
+    content: '•';
+}
+
+.dir::before {
+    content: '+';
+    transform: scale(1.5);
+}
+
+.dir:hover::before {
+    transform: scale(2.5);
+}

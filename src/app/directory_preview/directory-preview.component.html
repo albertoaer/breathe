@@ -1,0 +1,18 @@
+<ul id="route">
+    /
+    <li *ngFor="let part of location; let idx = index">
+        <span (click)="moveRelative(idx)">{{ part }}</span>
+        /
+    </li>
+</ul>
+<div id="content">
+    <div *ngFor="let item of items" class="{{ item.kind }}">
+        {{ item.name }}
+    </div>
+    <div class="new" (click)="newFolder()">
+        New Folder
+    </div>
+    <div class="new" (click)="newFile()">
+        New File
+    </div>
+</div>
