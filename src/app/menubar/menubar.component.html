@@ -1,3 +1,6 @@
+<app-dialog #treedialog>
+    <app-directory-preview></app-directory-preview>
+</app-dialog>
 <div>
     <ul id="main">
         <li>
@@ -28,18 +31,15 @@
         <li>
             <span>Theme</span>
             <ul class="sub">
-                <li>
-                    Dark
-                </li>
-                <li>
-                    Light
+                <li *ngFor="let theme of availableThemes()" (click)="useTheme(theme)">
+                    {{ theme.displayName }}
                 </li>
             </ul>
         </li>
         <li>
             <span>Language</span>
         </li>
-        <li>
+        <li (click)="treedialog.show()">
             <span>Tree</span>
         </li>
     </ul>
