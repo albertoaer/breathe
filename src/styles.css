@@ -1,9 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=DynaPuff&display=swap');
+
 body {
     margin: 0;
     width: 100vw;
     height: 100vh;
     overflow: hidden;
+    font-family: 'DynaPuff', cursive;
+    scrollbar-color: grey black;
 }
+
+/*ACE*/
 
 .ace_gutter {
     background: none !important;
@@ -18,4 +24,18 @@ body {
 .ace_gutter-active-line {
     font-weight: bolder;
     color: white;
+}
+
+/*SCROLLBAR*/
+
+::-webkit-scrollbar {
+    width: 0.5rem;
+}
+
+::-webkit-scrollbar-track {
+    background: black;
+}
+
+::-webkit-scrollbar-thumb {
+    background: grey;
 }
