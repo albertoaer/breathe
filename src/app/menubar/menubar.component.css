@@ -5,6 +5,7 @@ div {
     justify-content: space-between;
     user-select: none;
     font-weight: 100;
+    flex-wrap: wrap;
 }
 
 div > * {
