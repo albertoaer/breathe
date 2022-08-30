@@ -23,6 +23,7 @@ export class CodeEditorComponent implements AfterViewInit {
       cursorStyle: 'slim',
       enableAutoIndent: true
     });
+    editor.renderer.setScrollMargin(10, 10, 10, 10);
     editor.setFontSize(15);
     editor.setShowPrintMargin(false);
     editor.focus();
