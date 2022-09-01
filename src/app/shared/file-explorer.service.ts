@@ -78,4 +78,9 @@ export class FileExplorerService {
     }
     this.updateItems();
   }
+
+  deleteElement(name: string) {
+    delete this.current.entries[name];
+    this.updateItems();
+  }
 }
