@@ -1,8 +1,8 @@
 :host {
     display: block;
-    padding: 15px 50px;
+    padding: 1em 1em;
     font-size: 20px;
-    width: 50vw;
+    width: 70vw;
 }
 
 ul {
@@ -28,7 +28,7 @@ ul {
 
 #content {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(9em, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(13em, 1fr));
     grid-gap: 15px;
     margin-bottom: 4%;
     user-select: none;
@@ -39,7 +39,7 @@ ul {
     justify-content: space-between;
     align-items: center;
     border-radius: 5px;
-    padding: 1em 1em;
+    padding: 0.7em 0.7em;
     background: linear-gradient(90deg, rgba(0, 0, 0, 0.1) 5%, rgba(0, 0, 0, 0.3));
     box-shadow: 1px 1px 1px black;
     overflow: hidden;
@@ -50,13 +50,13 @@ ul {
 }
 
 #content > div:hover {
-    transform: scale(1.02);
+    transform: scale(1.01);
     box-shadow: 1px 1px 4px black;
     cursor: pointer;
 }
 
 #content > div:active {
-    transform: scale(1.07);
+    transform: scale(1.02);
     box-shadow: 1px 1px 4px black;
     cursor: pointer;
 }
@@ -76,4 +76,25 @@ ul {
 
 .dir:hover::before {
     transform: scale(2.5);
+}
+
+.del {
+    margin-left: 1em;
+    background-color: rgb(122, 0, 0);
+    color: white;
+    display: flex;
+    border-radius: 10%;
+    width: 2em;
+    height: 2em;
+    justify-content: center;
+    align-items: center;
+}
+
+.del:hover {
+    background-color: rgb(255, 0, 0);
+    transform: rotateZ(5deg);
+}
+
+.del:active {
+    transform: scale(1.1);
 }

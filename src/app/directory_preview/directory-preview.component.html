@@ -1,3 +1,14 @@
+<ng-template #nameInput let-result>
+    <app-name-input (result)="result($event)"></app-name-input>
+</ng-template>
+
+<ng-template #sureInput let-result>
+    <app-confirm-input (result)="result($event)">Are you you sure?</app-confirm-input>
+</ng-template>
+
+<app-dialog>
+</app-dialog>
+
 <ul id="route">
     /
     <li *ngFor="let part of location; let idx = index">
@@ -6,13 +17,14 @@
     </li>
 </ul>
 <div id="content">
-    <div *ngFor="let item of items" class="{{ item.kind }}">
+    <div *ngFor="let item of items" class="{{ item.kind }}" (click)="openItem($event,item)">
         {{ item.name }}
+        <span class="del" (click)="delete($event, item)">X</span>
     </div>
-    <div class="new" (click)="newFolder()">
+    <div class="new" (click)="createItem(addDirectory.bind(this))">
         New Folder
     </div>
-    <div class="new" (click)="newFile()">
+    <div class="new" (click)="createItem(addFile.bind(this))">
         New File
     </div>
 </div>

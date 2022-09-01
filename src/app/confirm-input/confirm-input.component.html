@@ -1,0 +1,9 @@
+<h1><ng-content></ng-content></h1>
+<div>
+    <app-button [default]="true" (click)="result.emit(false)">
+        No
+    </app-button>
+    <app-button (click)="result.emit(true)">
+        Yes
+    </app-button>
+</div>

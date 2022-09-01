@@ -1,0 +1,26 @@
+button {
+    font-size: 1.4rem;
+    padding: 0.2rem 1.2rem;
+    border: 2px solid rgb(52, 52, 52);
+    border-radius: 5px;
+    background: white;
+    color: rgb(52, 52, 52);
+}
+
+button.default {
+    background: rgb(52, 52, 52);
+    color: white;
+}
+
+button:hover {
+    border: 2px solid rgb(23, 23, 23);
+    background: rgb(23, 23, 23);
+    color: white;
+    cursor: pointer;
+}
+
+button:active {
+    border: 2px solid rgb(0, 0, 0);
+    background: rgb(0, 0, 0);
+    color: white;
+}

@@ -7,6 +7,10 @@ import { CodeEditorComponent } from './code-editor/code-editor.component';
 import { MenubarComponent } from './menubar/menubar.component';
 import { DialogComponent } from './dialog/dialog.component';
 import { DirectoryPreviewComponent } from './directory_preview/directory-preview.component';
+import { NameInputComponent } from './name-input/name-input.component';
+import { ConfirmInputComponent } from './confirm-input/confirm-input.component';
+import { ButtonComponent } from './button/button.component';
+import { ErrorBoxComponent } from './error-box/error-box.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +18,11 @@ import { DirectoryPreviewComponent } from './directory_preview/directory-preview
     CodeEditorComponent,
     MenubarComponent,
     DialogComponent,
-    DirectoryPreviewComponent
+    DirectoryPreviewComponent,
+    NameInputComponent,
+    ConfirmInputComponent,
+    ButtonComponent,
+    ErrorBoxComponent
   ],
   imports: [
     BrowserModule,

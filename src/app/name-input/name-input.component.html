@@ -1,0 +1,5 @@
+<input type="text" name="" id="input" #res>
+<div>
+    <app-button (click)="result.emit(undefined); res.value = ''">Cancel</app-button>
+    <app-button (click)="result.emit(res.value); res.value = ''">Ok!</app-button>
+</div>

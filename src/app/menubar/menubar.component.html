@@ -1,6 +1,10 @@
-<app-dialog #treedialog>
+<ng-template #directory>
     <app-directory-preview></app-directory-preview>
+</ng-template>
+
+<app-dialog #dialog>
 </app-dialog>
+
 <div>
     <ul id="main">
         <li>
@@ -39,7 +43,7 @@
         <li>
             <span>Language</span>
         </li>
-        <li (click)="treedialog.show()">
+        <li (click)="dialog.showComponent(directory)">
             <span>Tree</span>
         </li>
     </ul>

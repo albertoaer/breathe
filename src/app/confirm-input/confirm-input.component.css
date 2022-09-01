@@ -1,0 +1,18 @@
+:host {
+    display: block;
+    width: 50vh;
+    text-align: center;
+    margin: 20px auto;
+    height: auto;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+div {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
