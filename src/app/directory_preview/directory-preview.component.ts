@@ -13,23 +13,17 @@ export class DirectoryPreviewComponent implements OnInit {
   items: DirectoryItem[] = [];
 
   @ViewChild(DialogComponent)
-  confirmDialog!: DialogComponent<boolean>;
-  @ViewChild(DialogComponent)
-  nameDialog!: DialogComponent<string | undefined>;
+  dialog!: DialogComponent;
 
-  @ViewChild('sureInput')
-  confirm!: TemplateRef<any>;
+  @ViewChild('confirmInput')
+  confirmInput!: TemplateRef<any>;
   @ViewChild('nameInput')
-  name!: TemplateRef<any>;
+  nameInput!: TemplateRef<any>;
 
   constructor(protected explorer: FileExplorerService) { }
 
   ngOnInit(): void {
     this.explorer.getItems().subscribe(items => this.items = items);
-  }
-
-  getDialog<T>(): DialogComponent<T> {
-    return ViewChild(DialogComponent);
   }
 
   moveRelative(idx: number) {
@@ -47,20 +41,17 @@ export class DirectoryPreviewComponent implements OnInit {
   }
 
   delete(event: Event, item: DirectoryItem) {
-    const sub = this.confirmDialog.showComponent(this.confirm).subscribe(res => {
+    this.dialog.showComponent(this.confirmInput, (res: boolean) => {
       if (res)
         this.explorer.deleteElement(item.name);
-      sub.unsubscribe();
     });
     event.stopPropagation();
   }
 
   createItem(method: (name: string) => void) {
-    const sub = this.nameDialog.showComponent(this.name).subscribe(name => {
-      console.log(name);
+    this.dialog.showComponent(this.nameInput, (name: string | undefined) => {
       if (name)
         method(name);
-      sub.unsubscribe();
     });
   }
 

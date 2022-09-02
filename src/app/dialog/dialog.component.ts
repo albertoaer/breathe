@@ -1,14 +1,15 @@
 import { Component, ElementRef, HostListener, TemplateRef } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { Subject, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-dialog',
   templateUrl: './dialog.component.html',
   styleUrls: ['./dialog.component.css']
 })
-export class DialogComponent<T> {
+export class DialogComponent {
   protected template?: TemplateRef<any>;
-  protected output: Subject<T> = new Subject();
+  protected output: Subject<any> = new Subject();
+  private subcriptions: Subscription[] = [];
 
   constructor(public element: ElementRef) { }
 
@@ -16,17 +17,22 @@ export class DialogComponent<T> {
     this.element.nativeElement.style.display = 'block';
   }
   
-  showComponent(template: TemplateRef<any>): Observable<T> {
+  showComponent<T>(template: TemplateRef<any>, onResult?: ((arg: T) => void)) {
     this.template = template;
+    this.subcriptions.push(this.output.subscribe(res => {
+      if (onResult)
+      onResult(res as T);
+    }));
     this.show();
-    return this.output.asObservable();
   }
 
   hide() {
     this.element.nativeElement.style.display = 'none';
+    this.subcriptions.forEach(x => x.unsubscribe());
+    this.subcriptions = [];
   }
 
-  hideOnResult(event: T) {
+  hideOnResult(event: any) {
     this.output.next(event);
     this.hide();
   }
@@ -34,6 +40,6 @@ export class DialogComponent<T> {
   @HostListener('click', ['$event.target'])
   onClick(target: Element) {
     if (target == this.element.nativeElement)
-      this.element.nativeElement.style.display = 'none';
+      this.hide();
   }
 }
