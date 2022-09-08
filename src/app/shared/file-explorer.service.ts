@@ -65,6 +65,10 @@ export class FileExplorerService {
     return true;
   }
 
+  includes(name: string): boolean {
+    return Object.keys(this.current.entries).includes(name);
+  }
+
   addDirectory(name: string) {
     this.current.entries[name] = {
       entries: {}

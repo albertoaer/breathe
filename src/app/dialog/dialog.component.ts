@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostListener, TemplateRef } from '@angular/core';
+import { Component, ElementRef, EventEmitter, HostListener, TemplateRef } from '@angular/core';
 import { Subject, Subscription } from 'rxjs';
 
 @Component({
@@ -10,6 +10,7 @@ export class DialogComponent {
   protected template?: TemplateRef<any>;
   protected output: Subject<any> = new Subject();
   private subcriptions: Subscription[] = [];
+  private closedEvent: EventEmitter<any> = new EventEmitter();
 
   constructor(public element: ElementRef) { }
 
@@ -21,7 +22,7 @@ export class DialogComponent {
     this.template = template;
     this.subcriptions.push(this.output.subscribe(res => {
       if (onResult)
-      onResult(res as T);
+        onResult(res as T);
     }));
     this.show();
   }
@@ -35,6 +36,14 @@ export class DialogComponent {
   hideOnResult(event: any) {
     this.output.next(event);
     this.hide();
+    this.closedEvent.next(null);
+  }
+
+  onceClosed(callback: (dialog: DialogComponent) => void) {
+    const s = this.closedEvent.subscribe(_ => {
+      callback(this);
+      s.unsubscribe();
+    });
   }
   
   @HostListener('click', ['$event.target'])

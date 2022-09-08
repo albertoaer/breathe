@@ -19,6 +19,10 @@ export class DirectoryPreviewComponent implements OnInit {
   confirmInput!: TemplateRef<any>;
   @ViewChild('nameInput')
   nameInput!: TemplateRef<any>;
+  @ViewChild('errorBox')
+  errorBox!: TemplateRef<any>;
+
+  errorMessage: string = '';
 
   constructor(protected explorer: FileExplorerService) { }
 
@@ -50,8 +54,14 @@ export class DirectoryPreviewComponent implements OnInit {
 
   createItem(method: (name: string) => void) {
     this.dialog.showComponent(this.nameInput, (name: string | undefined) => {
-      if (name)
-        method(name);
+      if (name) {
+        if (this.explorer.includes(name)) {
+          this.errorMessage = 'Name already registered';
+          this.dialog.onceClosed(x => x.showComponent(this.errorBox));
+        }
+        else
+          method(name);
+      }
     });
   }
 
