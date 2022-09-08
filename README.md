@@ -1,13 +1,14 @@
 # Breathe
 
-Small online code editor that integrates Ace.
+Minimal online code editor that integrates Ace.
 
-Developed using Angular as learning project.
+Developed using Angular as a learning project.
 
 ## Features
 
-- Full control over the Ace editor settings, such as theme, language(mode) and font.
-- Custom explorer UI with directories inside the browser for openning files.
+- Full control over the Ace editor settings, such as theme, language(mode) and font(not yet)
+- Custom explorer UI with directories inside the browser, can be created and removed
+- Each directory has files that can also be created and removed
 
 ## Development server
 
