@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 
-interface File {
+export interface File {
   content: string
 }
 
-type ItemType = File | Directory
+export type ItemType = File | Directory
 
-interface Directory {
+export interface Directory {
   entries: {[name: string]: ItemType }
 }
 
@@ -67,6 +67,10 @@ export class FileExplorerService {
 
   includes(name: string): boolean {
     return Object.keys(this.current.entries).includes(name);
+  }
+
+  access(name: string): File | Directory | undefined {
+    return this.current.entries[name];
   }
 
   addDirectory(name: string) {

@@ -1,5 +1,6 @@
-import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, TemplateRef, ViewChild } from '@angular/core';
 import { DialogComponent } from '../dialog/dialog.component';
+import { EditorContentService } from '../shared/editor-content.service';
 import { DirectoryItem, FileExplorerService } from '../shared/file-explorer.service';
 
 @Component({
@@ -8,6 +9,9 @@ import { DirectoryItem, FileExplorerService } from '../shared/file-explorer.serv
   styleUrls: ['./directory-preview.component.css']
 })
 export class DirectoryPreviewComponent implements OnInit {
+
+  @Output()
+  exit: EventEmitter<any> = new EventEmitter();
 
   location: string[] = [];
   items: DirectoryItem[] = [];
@@ -24,7 +28,7 @@ export class DirectoryPreviewComponent implements OnInit {
 
   errorMessage: string = '';
 
-  constructor(protected explorer: FileExplorerService) { }
+  constructor(protected editorContent: EditorContentService, protected explorer: FileExplorerService) { }
 
   ngOnInit(): void {
     this.explorer.getItems().subscribe(items => this.items = items);
@@ -41,13 +45,25 @@ export class DirectoryPreviewComponent implements OnInit {
   }
 
   openItem(event: Event, item: DirectoryItem) {
+    if (item.kind == 'file') {
+      const f = this.explorer.access(item.name);
+      if (f && 'content' in f)
+        this.editorContent.openFile({name: item.name, file: f});
+    }
     event.stopPropagation();
+    this.exit.emit(null);
   }
 
   delete(event: Event, item: DirectoryItem) {
     this.dialog.showComponent(this.confirmInput, (res: boolean) => {
-      if (res)
+      if (res) {
+        if (item.kind == 'file') {
+          const f = this.explorer.access(item.name);
+          if (f && 'content' in f && this.editorContent.isOpen(f))
+            this.editorContent.openFile(null);
+        }
         this.explorer.deleteElement(item.name);
+      }
     });
     event.stopPropagation();
   }

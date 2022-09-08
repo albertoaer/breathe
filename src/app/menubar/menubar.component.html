@@ -1,5 +1,5 @@
-<ng-template #directory>
-    <app-directory-preview></app-directory-preview>
+<ng-template #directory let-result>
+    <app-directory-preview (exit)="result($event)"></app-directory-preview>
 </ng-template>
 
 <app-dialog #dialog>
